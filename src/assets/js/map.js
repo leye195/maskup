@@ -5,7 +5,8 @@ import { getAPIData } from "./mask";
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
     gpsBtn = document.querySelector(".gps-button"),
     searchBar = document.querySelector("#search");
-  let map = null;
+  let map = null,
+    input = "";
   const initMap = () => {
     const options = {
       //지도를 생성할 때 필요한 기본 옵션
@@ -22,12 +23,14 @@ import { getAPIData } from "./mask";
     const {
       target: { value }
     } = e;
-    console.log(value);
+    input = value;
     try {
       let ps = new kakao.maps.services.Places();
-      ps.keywordSearch(value, placeSearchCB);
+      ps.keywordSearch(input, placeSearchCB);
     } catch (e) {
       console.log(e);
+    } finally {
+      e.target.value = "";
     }
   };
   const placeSearchCB = (data, status, pagination) => {
@@ -46,7 +49,7 @@ import { getAPIData } from "./mask";
   };
   const mapPins = async (latitude, longitude) => {
     try {
-      let response = await getAPIData(latitude, longitude);
+      let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
       const positions = stores.map(item => {
         return {
