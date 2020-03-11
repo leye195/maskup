@@ -1,5 +1,4 @@
 import { getAPIData } from "./mask";
-
 (() => {
   //map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
@@ -18,8 +17,7 @@ import { getAPIData } from "./mask";
     };
     map = new kakao.maps.Map(container, options);
     map.setMinLevel(2);
-    map.setMaxLevel(13);
-    //mapPins(latitude, longitude);
+    map.setMaxLevel(12);
   };
   const handleSearch = e => {
     const {
@@ -50,25 +48,73 @@ import { getAPIData } from "./mask";
       mapPins(Ha, Ga);
     }
   };
-  const handleClickMarker = () => {
-    if (clickedOverlay !== null) {
+  const getInfoWinTag = obj => {
+    const wrap = document.createElement("div"),
+      info = document.createElement("div"),
+      title = document.createElement("div"),
+      close = document.createElement("div"),
+      body = document.createElement("div"),
+      desc = document.createElement("div"),
+      status = document.createElement("div"),
+      addr = document.createElement("div");
+
+    status.className = `status ${obj.remain_stat}`;
+    addr.className = "addr";
+    desc.className = "desc";
+    close.className = "close";
+    title.className = "title";
+    info.className = "info";
+    wrap.className = "wrap";
+
+    close.innerText = `❌`;
+    title.innerText = `${obj.title}`;
+    status.innerText = `재고상태: ${
+      obj.remain_stat === "empty"
+        ? "품절"
+        : obj.remain_stat === "few"
+        ? "적음(1~29개)"
+        : obj.remain_stat === "some"
+        ? "양호(30~99개)"
+        : "많음(100개이상)"
+    }`;
+    addr.innerText = `${obj.addr}`;
+
+    close.addEventListener("click", closeOverlay);
+    desc.appendChild(status);
+    desc.appendChild(addr);
+    body.appendChild(desc);
+    title.appendChild(close);
+    info.appendChild(title);
+    info.appendChild(body);
+    wrap.appendChild(info);
+
+    return wrap;
+  };
+  const handleClickMarker = (marker, info) => {
+    if (clickedOverlay) {
       clickedOverlay.setMap(null);
     }
+    infowin = new kakao.maps.CustomOverlay({
+      content: getInfoWinTag(info),
+      position: marker.getPosition(),
+      clickable: true,
+      zIndex: 3
+    });
     infowin.setMap(map);
     clickedOverlay = infowin;
   };
   const closeOverlay = () => {
-    console.log(123);
     if (clickedOverlay) {
       clickedOverlay.setMap(null);
       clickedOverlay = null;
     }
   };
+
+  //좌표 마크 데이터에 표시 진행
   const mapPins = async (latitude, longitude) => {
     try {
       let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
-      console.log(stores);
       const positions = stores.map(item => {
         return {
           addr: item.addr,
@@ -80,54 +126,29 @@ import { getAPIData } from "./mask";
           latlng: new kakao.maps.LatLng(item.lat, item.lng)
         };
       });
-      //console.log(positions);
-      let imgSrc = "",
-        status = "";
+      let imgSrc = "";
       const imgSize = new kakao.maps.Size(24, 30);
 
       for (let i = 0; i < positions.length; i++) {
         if (positions[i].remain_stat === "empty") {
           imgSrc = "/static/img/marker-grey.png";
-          status = "없음";
         } else if (positions[i].remain_stat === "few") {
           imgSrc = "/static/img/marker-red.png";
-          status = "적음";
         } else if (positions[i].remain_stat === "some") {
           imgSrc = "/static/img/marker-yellow.png";
-          status = "보통";
         } else if (positions[i].remain_stat === "plenty") {
           imgSrc = "/static/img/marker-green.png";
-          status = "많음";
         }
         let markerImg = new kakao.maps.MarkerImage(imgSrc, imgSize);
-        //console.log(markerImg);
         let marker = new kakao.maps.Marker({
           map: map,
           position: positions[i].latlng,
           title: positions[i].title,
           image: markerImg
         });
-        const infoContent = `<div class="wrap">
-              <div class="info">
-                  <div class="title">
-                      ${positions[i].title}
-                      <div class="close" onclick=${closeOverlay} title="닫기"></div>
-                  </div>
-                  <div class="body">
-                      <div class="desc">
-                          <p>${status}</p>
-                          <div class="ellipsis">${positions[i].addr}</div>
-                      </div>
-                  </div>
-              </div>
-          </div>`;
-        infowin = new kakao.maps.CustomOverlay({
-          content: infoContent,
-          position: marker.getPosition(),
-          clickable: true,
-          zIndex: 3
+        kakao.maps.event.addListener(marker, "click", () => {
+          handleClickMarker(marker, positions[i]);
         });
-        //kakao.maps.event.addListener(marker, "click", handleClickMarker);
       }
     } catch (e) {
       console.log(e);
@@ -136,10 +157,12 @@ import { getAPIData } from "./mask";
 
   const saveCoords = (lat, lng) => {
     if (!localStorage.getItem("latlng")) {
+      //저장된 위치 데이터가 없을경우
       localStorage.setItem("latlng", JSON.stringify({ lat, lng }));
     } else {
       const prevCoords = JSON.parse(localStorage.getItem("latlng"));
       if (prevCoords.lat !== lat || prevCoords.lng !== lng) {
+        //현재 위치와 저장된 위치 비교
         localStorage.setItem("latlng", JSON.stringify({ lat, lng }));
       }
     }
@@ -172,7 +195,6 @@ import { getAPIData } from "./mask";
   const panTo = () => {
     const coords = getCoords();
     const moveLatLng = new kakao.maps.LatLng(coords.lat, coords.lng);
-    console.log(moveLatLng);
     map.setLevel(4);
     map.panTo(moveLatLng);
     mapPins(coords.lat, coords.lng);

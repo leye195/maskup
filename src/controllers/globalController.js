@@ -1,4 +1,6 @@
-import axios from "axios";
+import dotenv from "dotenv";
+dotenv.config();
 export const home = (req, res) => {
-  res.render("home", { pageTitle: "MaskUp" });
+  const KEY = process.env.MAP_API;
+  res.render("home", { pageTitle: "MaskUp", api: KEY });
 };

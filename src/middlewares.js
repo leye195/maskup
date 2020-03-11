@@ -1,7 +1,4 @@
 import moment from "moment";
-import dotenv from "dotenv";
-dotenv.config();
-const KEY = process.env.MAP_API;
 const days = {
   1: { day: "월", target: "1,6" },
   2: { day: "화", target: "2,7" },
@@ -14,7 +11,7 @@ const days = {
 export const localMiddleware = (req, res, next) => {
   const today = moment();
   res.locals.siteTitle = "마스크's Up";
-  res.locals.api = KEY;
+  //res.locals.api = KEY;
   res.locals.today = days[today.day()];
   next();
 };
