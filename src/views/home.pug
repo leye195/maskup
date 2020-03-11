@@ -2,8 +2,7 @@ extends ./layout/layout
 block content 
     div(id="map" style="width:100vw;height:100vh;")
     .info-wrapper 
-        p=` 오늘은 `
-            span.today=` ${today.day}요일`
+        p.today=`오늘은 ${today.day}요일 입니다`
         p.notice=`${today.target!=="토"&& today.target!=="일"?`주민번호 끝 자리 ${today.target} 구매 가능`:`출생연도 관계없이 구매 가능`}` 
     include ./partials/stockNotice
 
