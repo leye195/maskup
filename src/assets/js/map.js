@@ -56,6 +56,7 @@ import { getAPIData } from "./mask";
       body = document.createElement("div"),
       desc = document.createElement("div"),
       status = document.createElement("div"),
+      stockAt = document.createElement("div"),
       addr = document.createElement("div");
 
     status.className = `status ${obj.remain_stat}`;
@@ -68,6 +69,7 @@ import { getAPIData } from "./mask";
 
     close.innerText = `❌`;
     title.innerText = `${obj.title}`;
+    stockAt.innerText = `입고시간: ${obj.stock_at}`;
     status.innerText = `재고상태: ${
       obj.remain_stat === "empty"
         ? "품절"
@@ -81,6 +83,7 @@ import { getAPIData } from "./mask";
 
     close.addEventListener("click", closeOverlay);
     desc.appendChild(status);
+    desc.appendChild(stockAt);
     desc.appendChild(addr);
     body.appendChild(desc);
     title.appendChild(close);
@@ -115,6 +118,7 @@ import { getAPIData } from "./mask";
     try {
       let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
+      console.log(stores[0]);
       const positions = stores.map(item => {
         return {
           addr: item.addr,
