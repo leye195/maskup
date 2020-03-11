@@ -3,13 +3,17 @@
         div.mdl-layout__header-row.row
          <!-- Title -->
             .wrapper
-                span.mdl-layout-title #{siteTitle}
+                span.mdl-layout-title.main-title #{siteTitle}
                 include ./searchBar
             include ./gpsButton
         <!-- Add spacer, to align navigation to the right -->
             div.mdl-layout-spacer
-    .mdl-layout__drawer
-        span.mdl-layout-title MaskUp
+    .mdl-layout__drawer.side
+        span.mdl-layout-title.side-title 마스크's Up
+        .warn-wrapper
+            p.dummy 주의:
+            p 1.마스크 재고는 현장과 5~10분 정도 차이가 있습니다 
+            p 2.마스크 재고는 08시 ~ 23시 사이에만 업데이트 됩니다.
         nav.mdl-navigation
-            a.mdl-navigation__link 업데이트 예정
+            a.mdl-navigation__link(href="https://github.com/leye195")  개발자 Github
     </nav>

@@ -5,6 +5,10 @@
   }
   header {
     background-color: $greensea !important;
+    z-index: 5 !important;
+  }
+  .side {
+    z-index: 10 !important;
   }
   .row {
     justify-content: space-between;
@@ -63,6 +67,22 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      .info {
+        border-radius: 20px;
+        padding: 0 5px;
+        &:nth-child(1) {
+          background-color: #0f9e0f38;
+        }
+        &:nth-child(2) {
+          background-color: #d2d21c4d;
+        }
+        &:nth-child(3) {
+          background-color: #b1151530;
+        }
+        &:nth-child(4) {
+          background-color: #a5a0a03b;
+        }
+      }
       span {
         color: #211a1a;
         font-size: 0.8rem;
@@ -110,6 +130,10 @@
   }
   header {
     background-color: $greensea !important;
+    z-index: 5 !important;
+  }
+  .side {
+    z-index: 10 !important;
   }
   .row {
     justify-content: space-between;
@@ -164,6 +188,22 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      .info {
+        border-radius: 20px;
+        padding: 0 5px;
+        &:nth-child(1) {
+          background-color: #0f9e0f38;
+        }
+        &:nth-child(2) {
+          background-color: #d2d21c4d;
+        }
+        &:nth-child(3) {
+          background-color: #b1151530;
+        }
+        &:nth-child(4) {
+          background-color: #a5a0a03b;
+        }
+      }
       span {
         color: #211a1a;
         font-size: 0.8rem;
@@ -210,6 +250,10 @@
   }
   header {
     background-color: $greensea !important;
+    z-index: 5 !important;
+  }
+  .side {
+    z-index: 10 !important;
   }
   .row {
     justify-content: space-between;
@@ -263,6 +307,22 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      .info {
+        border-radius: 20px;
+        padding: 0 5px;
+        &:nth-child(1) {
+          background-color: #0f9e0f38;
+        }
+        &:nth-child(2) {
+          background-color: #d2d21c4d;
+        }
+        &:nth-child(3) {
+          background-color: #b1151530;
+        }
+        &:nth-child(4) {
+          background-color: #a5a0a03b;
+        }
+      }
       span {
         color: #211a1a;
         font-size: 0.8rem;
