@@ -6,7 +6,9 @@ import { getAPIData } from "./mask";
     gpsBtn = document.querySelector(".gps-button"),
     searchBar = document.querySelector("#search");
   let map = null,
-    input = "";
+    input = "",
+    infowin = null,
+    clickedOverlay = null;
   const initMap = () => {
     const options = {
       //지도를 생성할 때 필요한 기본 옵션
@@ -33,6 +35,7 @@ import { getAPIData } from "./mask";
       e.target.value = "";
     }
   };
+
   const placeSearchCB = (data, status, pagination) => {
     if (status === kakao.maps.services.Status.OK) {
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -47,10 +50,25 @@ import { getAPIData } from "./mask";
       mapPins(Ha, Ga);
     }
   };
+  const handleClickMarker = () => {
+    if (clickedOverlay !== null) {
+      clickedOverlay.setMap(null);
+    }
+    infowin.setMap(map);
+    clickedOverlay = infowin;
+  };
+  const closeOverlay = () => {
+    console.log(123);
+    if (clickedOverlay) {
+      clickedOverlay.setMap(null);
+      clickedOverlay = null;
+    }
+  };
   const mapPins = async (latitude, longitude) => {
     try {
       let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
+      console.log(stores);
       const positions = stores.map(item => {
         return {
           addr: item.addr,
@@ -63,18 +81,23 @@ import { getAPIData } from "./mask";
         };
       });
       //console.log(positions);
-      let imgSrc = "";
+      let imgSrc = "",
+        status = "";
       const imgSize = new kakao.maps.Size(24, 30);
 
       for (let i = 0; i < positions.length; i++) {
         if (positions[i].remain_stat === "empty") {
           imgSrc = "/static/img/marker-grey.png";
+          status = "없음";
         } else if (positions[i].remain_stat === "few") {
           imgSrc = "/static/img/marker-red.png";
+          status = "적음";
         } else if (positions[i].remain_stat === "some") {
           imgSrc = "/static/img/marker-yellow.png";
+          status = "보통";
         } else if (positions[i].remain_stat === "plenty") {
           imgSrc = "/static/img/marker-green.png";
+          status = "많음";
         }
         let markerImg = new kakao.maps.MarkerImage(imgSrc, imgSize);
         //console.log(markerImg);
@@ -84,11 +107,33 @@ import { getAPIData } from "./mask";
           title: positions[i].title,
           image: markerImg
         });
+        const infoContent = `<div class="wrap">
+              <div class="info">
+                  <div class="title">
+                      ${positions[i].title}
+                      <div class="close" onclick=${closeOverlay} title="닫기"></div>
+                  </div>
+                  <div class="body">
+                      <div class="desc">
+                          <p>${status}</p>
+                          <div class="ellipsis">${positions[i].addr}</div>
+                      </div>
+                  </div>
+              </div>
+          </div>`;
+        infowin = new kakao.maps.CustomOverlay({
+          content: infoContent,
+          position: marker.getPosition(),
+          clickable: true,
+          zIndex: 3
+        });
+        //kakao.maps.event.addListener(marker, "click", handleClickMarker);
       }
     } catch (e) {
       console.log(e);
     }
   };
+
   const saveCoords = (lat, lng) => {
     if (!localStorage.getItem("latlng")) {
       localStorage.setItem("latlng", JSON.stringify({ lat, lng }));

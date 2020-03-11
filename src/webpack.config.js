@@ -50,5 +50,6 @@ const config = {
     filename: "[name].js"
   },
   plugins: [new ExtractCSS("styles.css")]
+  //node: { fs: "empty" }
 };
 module.exports = config;
