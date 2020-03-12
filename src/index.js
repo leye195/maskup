@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
+import helmet from "helmet";
 import morgan from "morgan";
 import dotenv from "dotenv";
 import { localMiddleware } from "./middlewares";
@@ -11,6 +12,7 @@ const app = express();
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+app.use(helmet());
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
