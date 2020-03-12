@@ -50,7 +50,6 @@ import { getAPIData } from "./mask";
     }
   };
   const getInfoWinTag = obj => {
-    console.log(obj.created_at);
     const wrap = document.createElement("div"),
       info = document.createElement("div"),
       title = document.createElement("div"),
@@ -59,8 +58,7 @@ import { getAPIData } from "./mask";
       desc = document.createElement("div"),
       status = document.createElement("div"),
       stockAt = document.createElement("div"),
-      addr = document.createElement("div");
-    //createdAt = document.createElement("div");
+      addr = document.createElement("a");
 
     status.className = `status ${obj.remain_stat}`;
     addr.className = "addr";
@@ -83,6 +81,7 @@ import { getAPIData } from "./mask";
         : "많음(100개이상)"
     }`;
     addr.innerText = `${obj.addr}`;
+    addr.href = `https://map.kakao.com/link/to/${obj.title},${obj.latlng.Ha},${obj.latlng.Ga}`;
 
     close.addEventListener("click", closeOverlay);
     desc.appendChild(status);
@@ -121,7 +120,7 @@ import { getAPIData } from "./mask";
     try {
       let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
-      console.log(stores[0]);
+      //console.log(stores[0]);
       const positions = stores.map(item => {
         return {
           addr: item.addr,
@@ -173,7 +172,6 @@ import { getAPIData } from "./mask";
         localStorage.setItem("latlng", JSON.stringify({ lat, lng }));
       }
     }
-    console.log("123");
   };
   const getCoords = () => {
     if (localStorage.getItem("latlng"))

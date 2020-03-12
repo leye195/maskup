@@ -172,7 +172,7 @@
     }
   }
   .info-wrapper {
-    @include flex(row, center, none);
+    @include flex(column, center, none);
     position: absolute;
     top: 0;
     right: 0;
