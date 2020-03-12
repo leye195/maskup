@@ -6,6 +6,7 @@
   header {
     background-color: $greensea !important;
     z-index: 5 !important;
+    display: flex !important;
   }
   .side {
     z-index: 10 !important;
@@ -59,7 +60,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    background-color: #ffffff96;
+    background-color: transparent;
     width: 8rem;
     height: 10rem;
     z-index: 1;
@@ -131,6 +132,7 @@
   header {
     background-color: $greensea !important;
     z-index: 5 !important;
+    display: flex !important;
   }
   .side {
     z-index: 10 !important;
@@ -180,7 +182,7 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    background-color: #ffffff96;
+    background-color: transparent;
     width: 10rem;
     height: 10rem;
     z-index: 1;
@@ -251,6 +253,7 @@
   header {
     background-color: $greensea !important;
     z-index: 5 !important;
+    display: flex !important;
   }
   .side {
     z-index: 10 !important;
@@ -299,7 +302,8 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    background-color: #ffffff96;
+    background-color: transparent;
+
     width: 10rem;
     height: 10rem;
     z-index: 1;

@@ -50,6 +50,7 @@ import { getAPIData } from "./mask";
     }
   };
   const getInfoWinTag = obj => {
+    console.log(obj.created_at);
     const wrap = document.createElement("div"),
       info = document.createElement("div"),
       title = document.createElement("div"),
@@ -59,6 +60,7 @@ import { getAPIData } from "./mask";
       status = document.createElement("div"),
       stockAt = document.createElement("div"),
       addr = document.createElement("div");
+    //createdAt = document.createElement("div");
 
     status.className = `status ${obj.remain_stat}`;
     addr.className = "addr";

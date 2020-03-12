@@ -1,7 +1,13 @@
 .warn-wrapper {
   margin: 10px;
+  .dummy {
+    font-weight: 800;
+  }
 }
 .main-title,
 .side-title {
   font-weight: 700 !important;
+}
+.source-from {
+  font-size: 0.8rem !important;
 }
