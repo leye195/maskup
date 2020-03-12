@@ -31,6 +31,7 @@ import { getAPIData } from "./mask";
       console.log(e);
     } finally {
       e.target.value = "";
+      e.target.blur();
     }
   };
 
