@@ -25,6 +25,8 @@ import { getAPIData, getPlaceCoords } from "./mask";
     } = e;
     input = value;
     try {
+      //onst data = await getPlaceCoords(input);
+      //console.log(data);
       let ps = new kakao.maps.services.Places();
       ps.keywordSearch(input, placeSearchCB);
     } catch (e) {
@@ -178,6 +180,7 @@ import { getAPIData, getPlaceCoords } from "./mask";
       return JSON.parse(localStorage.getItem("latlng"));
   };
   const getPosition = pos => {
+    alert("awdwadada");
     saveCoords(pos.coords.latitude, pos.coords.longitude);
     kakao.maps.event.addListener(map, "dragend", () => {
       let latlng = map.getCenter();
@@ -189,16 +192,14 @@ import { getAPIData, getPlaceCoords } from "./mask";
     console.log(e);
   };
   const getCurrentCoord = () => {
-    const geoOptions = {
-      enableHighAccuracy: true
-    };
-    navigator.geolocation.getCurrentPosition(
-      getPosition,
-      handlePositionError,
-      geoOptions
-    );
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        getPosition,
+        handlePositionError
+      );
+    }
   };
-  const panTo = () => {
+  const panTo = e => {
     const coords = getCoords();
     const moveLatLng = new kakao.maps.LatLng(coords.lat, coords.lng);
     map.setLevel(4);

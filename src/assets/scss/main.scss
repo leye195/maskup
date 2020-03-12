@@ -6,10 +6,12 @@
   .fixed-header {
     @include flex(row, none, none);
     position: fixed;
+    width: 100vw !important;
+    height: 57px !important;
+    z-index: 3;
   }
   header {
     background-color: $greensea !important;
-    z-index: 5 !important;
     display: flex !important;
     width: 100vw !important;
     height: 57px !important;
@@ -53,6 +55,7 @@
     border-radius: 50%;
     background-color: white;
     box-shadow: 2px 1px 4px 1px #676767;
+    z-index: 10;
     cursor: pointer;
     .fa-crosshairs {
       font-size: 1.5rem;
