@@ -180,7 +180,6 @@ import { getAPIData, getPlaceCoords } from "./mask";
       return JSON.parse(localStorage.getItem("latlng"));
   };
   const getPosition = pos => {
-    alert("awdwadada");
     saveCoords(pos.coords.latitude, pos.coords.longitude);
     kakao.maps.event.addListener(map, "dragend", () => {
       let latlng = map.getCenter();
