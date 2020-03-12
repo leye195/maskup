@@ -170,7 +170,7 @@ import { getAPIData } from "./mask";
         localStorage.setItem("latlng", JSON.stringify({ lat, lng }));
       }
     }
-    return;
+    console.log("123");
   };
   const getCoords = () => {
     if (localStorage.getItem("latlng"))
@@ -190,7 +190,7 @@ import { getAPIData } from "./mask";
     const geoOptions = {
       enableHighAccuracy: true
     };
-    navigator.geolocation.watchPosition(
+    navigator.geolocation.getCurrentPosition(
       getPosition,
       handlePositionError,
       geoOptions
