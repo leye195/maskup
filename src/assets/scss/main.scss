@@ -3,10 +3,16 @@
     margin: 0;
     padding: 0;
   }
+  .fixed-header {
+    @include flex(row, center, none);
+    position: fixed;
+  }
   header {
     background-color: $greensea !important;
     z-index: 5 !important;
     display: flex !important;
+    width: 100vw !important;
+    height: 57px !important;
   }
   .side {
     z-index: 10 !important;

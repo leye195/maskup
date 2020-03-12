@@ -140,10 +140,18 @@ input {
   body {
     margin: 0;
     padding: 0; }
+  .fixed-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: none;
+    position: fixed; }
   header {
     background-color: #16a085 !important;
     z-index: 5 !important;
-    display: flex !important; }
+    display: flex !important;
+    width: 100vw !important;
+    height: 57px !important; }
   .side {
     z-index: 10 !important; }
   .row {
