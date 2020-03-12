@@ -15,5 +15,10 @@ html
         include ../partials/header
         block content
         script(src="/static/main.js")
+        script(type="text/javascript" src="//wcs.naver.net/wcslog.js")
+        script(type="text/javascript").
+            if(!wcs_add) var wcs_add = {};
+            wcs_add["wa"] = "7bd0c54d3954e";
+            wcs_do();
 
     

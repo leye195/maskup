@@ -1,4 +1,4 @@
-import { getAPIData } from "./mask";
+import { getAPIData, getPlaceCoords } from "./mask";
 (() => {
   //map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
@@ -19,7 +19,7 @@ import { getAPIData } from "./mask";
     map.setMinLevel(2);
     map.setMaxLevel(12);
   };
-  const handleSearch = e => {
+  const handleSearch = async e => {
     const {
       target: { value }
     } = e;
