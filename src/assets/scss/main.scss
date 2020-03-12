@@ -4,7 +4,7 @@
     padding: 0;
   }
   .fixed-header {
-    @include flex(row, center, none);
+    @include flex(row, none, none);
     position: fixed;
   }
   header {
