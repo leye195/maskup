@@ -183,8 +183,9 @@ import { getAPIData } from "./mask";
       mapPins(latlng.getLat(), latlng.getLng());
     });
   };
-  const handlePositionError = () => {
+  const handlePositionError = e => {
     console.log("위치 좌표를 불러올수 없습니다.");
+    console.log(e);
   };
   const getCurrentCoord = () => {
     const geoOptions = {
