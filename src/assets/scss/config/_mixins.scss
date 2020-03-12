@@ -17,3 +17,27 @@
     @content;
   }
 }
+@mixin flex($direction, $align, $justify) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+@mixin info {
+  border-radius: 20px;
+  padding: 0 6px;
+  margin: 1px;
+  background-color: #ffffffc9;
+  /*&:nth-child(1) {
+          background-color: #0f9e0f38;
+        }
+        &:nth-child(2) {
+          background-color: #d2d21c4d;
+        }
+        &:nth-child(3) {
+          background-color: #b1151530;
+        }
+        &:nth-child(4) {
+          background-color: #a5a0a03b;
+        }*/
+}

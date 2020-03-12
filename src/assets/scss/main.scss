@@ -53,10 +53,7 @@
     }
   }
   .stock-notice-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    @include flex(row, center, center);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -65,24 +62,9 @@
     height: 10rem;
     z-index: 1;
     .img-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include flex(column, none, center);
       .info {
-        border-radius: 20px;
-        padding: 0 5px;
-        &:nth-child(1) {
-          background-color: #0f9e0f38;
-        }
-        &:nth-child(2) {
-          background-color: #d2d21c4d;
-        }
-        &:nth-child(3) {
-          background-color: #b1151530;
-        }
-        &:nth-child(4) {
-          background-color: #a5a0a03b;
-        }
+        @include info();
       }
       span {
         color: #211a1a;
@@ -92,6 +74,7 @@
     }
   }
   .info-wrapper {
+    @include flex(column, center, none);
     position: absolute;
     top: 0;
     right: 0;
@@ -100,9 +83,6 @@
     width: 100vw;
     height: 10vh;
     background-color: #ffffff96;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 5px;
     margin: 0px;
     .notice {
@@ -112,9 +92,7 @@
       font-size: 0.8rem;
     }
     p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex(row, center, center);
       width: 100%;
       margin: 0px;
       font-size: 0.75rem;
@@ -141,11 +119,9 @@
     justify-content: space-between;
   }
   .wrapper {
-    display: flex;
-    align-items: center;
+    @include flex(row, center, none);
     .search {
-      display: flex;
-      align-items: center;
+      @include flex(row, center, none);
       margin-left: 20px;
       label {
         border-radius: 0;
@@ -175,10 +151,7 @@
     }
   }
   .stock-notice-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    @include flex(row, center, center);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -187,24 +160,9 @@
     height: 10rem;
     z-index: 1;
     .img-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include flex(column, none, center);
       .info {
-        border-radius: 20px;
-        padding: 0 5px;
-        &:nth-child(1) {
-          background-color: #0f9e0f38;
-        }
-        &:nth-child(2) {
-          background-color: #d2d21c4d;
-        }
-        &:nth-child(3) {
-          background-color: #b1151530;
-        }
-        &:nth-child(4) {
-          background-color: #a5a0a03b;
-        }
+        @include info();
       }
       span {
         color: #211a1a;
@@ -214,6 +172,7 @@
     }
   }
   .info-wrapper {
+    @include flex(row, center, none);
     position: absolute;
     top: 0;
     right: 0;
@@ -222,9 +181,6 @@
     width: 25vw;
     height: 10vh;
     background-color: #ffffff96;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 5px;
     margin: 0px;
     .notice {
@@ -234,9 +190,7 @@
       font-size: 1rem;
     }
     p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex(row, center, center);
       width: 100%;
       margin: 0px;
       .today {
@@ -262,11 +216,9 @@
     justify-content: space-between;
   }
   .wrapper {
-    display: flex;
-    align-items: center;
+    @include flex(row, center, none);
     .search {
-      display: flex;
-      align-items: center;
+      @include flex(row, center, none);
       margin-left: 20px;
       label {
         border-radius: 0;
@@ -295,37 +247,18 @@
     }
   }
   .stock-notice-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    @include flex(row, center, center);
     position: absolute;
     right: 0;
     bottom: 0;
     background-color: transparent;
-
     width: 10rem;
     height: 10rem;
     z-index: 1;
     .img-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include flex(column, none, center);
       .info {
-        border-radius: 20px;
-        padding: 0 5px;
-        &:nth-child(1) {
-          background-color: #0f9e0f38;
-        }
-        &:nth-child(2) {
-          background-color: #d2d21c4d;
-        }
-        &:nth-child(3) {
-          background-color: #b1151530;
-        }
-        &:nth-child(4) {
-          background-color: #a5a0a03b;
-        }
+        @include info();
       }
       span {
         color: #211a1a;
@@ -335,6 +268,7 @@
     }
   }
   .info-wrapper {
+    @include flex(column, center, none);
     position: absolute;
     top: 0;
     right: 0;
@@ -343,9 +277,6 @@
     width: 20vw;
     height: 10vh;
     background-color: #ffffff96;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 5px;
     margin: 0px;
     .notice {
@@ -355,9 +286,7 @@
       font-size: 1.1rem;
     }
     p {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex(row, center, center);
       width: 100%;
       margin: 5px;
       .today {
