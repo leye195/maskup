@@ -1,7 +1,9 @@
 import { getAPIData } from "./mask";
+import moment from "moment";
 (() => {
   //map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
+    remainBtn = document.querySelector(".remain-buttin"),
     gpsBtn = document.querySelector(".gps-button"),
     searchBar = document.querySelector("#search");
   let map = null,
@@ -57,7 +59,10 @@ import { getAPIData } from "./mask";
       desc = document.createElement("div"),
       status = document.createElement("div"),
       stockAt = document.createElement("div"),
+      createdAt = document.createElement("p"),
       addr = document.createElement("a");
+    const now = moment(),
+      updated = moment(obj.createdAt);
 
     status.className = `status ${obj.remain_stat}`;
     addr.className = "addr";
@@ -66,12 +71,15 @@ import { getAPIData } from "./mask";
     title.className = "title";
     info.className = "info";
     wrap.className = "wrap";
+    createdAt.className = "created-at";
 
     close.innerText = `❌`;
     title.innerText = `${obj.title}`;
     stockAt.innerText = `입고시간: ${obj.stock_at ? obj.stock_at : ""}`;
-    status.innerText = `재고상태: ${
-      obj.remain_stat === "break"
+    status.innerText = `${
+      obj.remain_stat === null
+        ? "정보❌"
+        : obj.remain_stat === "break"
         ? "판매 중지"
         : obj.remain_stat === "empty"
         ? "품절"
@@ -81,12 +89,16 @@ import { getAPIData } from "./mask";
         ? "양호(30~99개)"
         : "많음(100개이상)"
     }`;
-    addr.innerText = `${obj.addr}`;
+    createdAt.innerText = `${moment
+      .duration(now.diff(updated))
+      .minutes()} 분 전 업데이트`;
+    addr.innerText = `길찾기`;
     addr.href = `https://map.kakao.com/link/to/${obj.title},${obj.latlng.Ha},${obj.latlng.Ga}`;
 
     close.addEventListener("click", closeOverlay);
     desc.appendChild(status);
     desc.appendChild(stockAt);
+    desc.appendChild(createdAt);
     desc.appendChild(addr);
     body.appendChild(desc);
     title.appendChild(close);

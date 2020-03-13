@@ -49,15 +49,21 @@
       }
     }
   }
-  .gps-button {
-    padding: 0.8rem;
-    border-radius: 50%;
-    background-color: white;
-    box-shadow: 2px 1px 4px 1px #676767;
-    z-index: 10;
-    cursor: pointer;
-    .fa-crosshairs {
-      font-size: 1.5rem;
+  .button-container {
+    @include flex(row, center, center);
+    .gps-button,
+    .remain-button {
+      padding: 0.8rem;
+      border-radius: 50%;
+      background-color: white;
+      font-weight: 800;
+      cursor: pointer;
+      .fa-crosshairs {
+        font-size: 1.5rem;
+      }
+    }
+    .remain-button {
+      display: none;
     }
   }
   .stock-notice-container {
@@ -149,15 +155,23 @@
       }
     }
   }
-  .gps-button {
-    padding: 0.8rem;
-    border-radius: 50%;
-    background-color: white;
-    cursor: pointer;
-    .fa-crosshairs {
-      font-size: 1.5rem;
+  .button-container {
+    @include flex(row, center, center);
+    .gps-button,
+    .remain-button {
+      height: 50px;
+      width: 50px;
+      padding: 0.8rem;
+      border-radius: 50%;
+      background-color: white;
+      font-weight: 800;
+      cursor: pointer;
+      .fa-crosshairs {
+        font-size: 1.5rem;
+      }
     }
   }
+
   .stock-notice-container {
     @include flex(row, center, center);
     position: absolute;
@@ -180,19 +194,19 @@
     }
   }
   .info-wrapper {
-    @include flex(column, center, none);
+    @include flex(column, center, center);
     position: absolute;
     top: 0;
     right: 0;
     transform: translateY(70px);
     z-index: 1;
-    width: 25vw;
+    width: 100vw;
     height: 10vh;
     background-color: #ffffff96;
     padding: 5px;
     margin: 0px;
     .notice {
-      color: $blue1;
+      color: $blue3;
       font-weight: 800;
       text-shadow: 1px 1px 5px #9e9e9ec4;
       font-size: 1rem;
@@ -246,12 +260,21 @@
       }
     }
   }
-  .gps-button {
-    padding: 0.8rem;
-    border-radius: 50%;
-    cursor: pointer;
-    .fa-crosshairs {
-      font-size: 1.5rem;
+  .button-container {
+    @include flex(row, center, center);
+    .gps-button,
+    .remain-button {
+      height: 50px;
+      width: 50px;
+      padding: 0.8rem;
+      border-radius: 50%;
+      background-color: white;
+      font-weight: 800;
+      margin: 2px;
+      cursor: pointer;
+      .fa-crosshairs {
+        font-size: 1.5rem;
+      }
     }
   }
   .stock-notice-container {
@@ -282,13 +305,13 @@
     right: 0;
     transform: translateY(70px);
     z-index: 1;
-    width: 20vw;
+    width: 100vw;
     height: 10vh;
     background-color: #ffffff96;
     padding: 5px;
     margin: 0px;
     .notice {
-      color: $blue1;
+      color: $blue3;
       font-weight: 800;
       text-shadow: 1px 1px 5px #9e9e9ec4;
       font-size: 1.1rem;

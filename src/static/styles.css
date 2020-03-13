@@ -6053,15 +6053,23 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
         width: 45vw;
         padding: 10px;
         font-size: 1.1rem; }
-  .gps-button {
-    padding: 0.8rem;
-    border-radius: 50%;
-    background-color: white;
-    box-shadow: 2px 1px 4px 1px #676767;
-    z-index: 10;
-    cursor: pointer; }
-    .gps-button .fa-crosshairs {
-      font-size: 1.5rem; }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; }
+    .button-container .gps-button,
+    .button-container .remain-button {
+      padding: 0.8rem;
+      border-radius: 50%;
+      background-color: white;
+      font-weight: 800;
+      cursor: pointer; }
+      .button-container .gps-button .fa-crosshairs,
+      .button-container .remain-button .fa-crosshairs {
+        font-size: 1.5rem; }
+    .button-container .remain-button {
+      display: none; }
   .stock-notice-container {
     display: flex;
     flex-direction: row;
@@ -6168,13 +6176,23 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
         width: 50vw;
         padding: 10px;
         font-size: 1.1rem; }
-  .gps-button {
-    padding: 0.8rem;
-    border-radius: 50%;
-    background-color: white;
-    cursor: pointer; }
-    .gps-button .fa-crosshairs {
-      font-size: 1.5rem; }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; }
+    .button-container .gps-button,
+    .button-container .remain-button {
+      height: 50px;
+      width: 50px;
+      padding: 0.8rem;
+      border-radius: 50%;
+      background-color: white;
+      font-weight: 800;
+      cursor: pointer; }
+      .button-container .gps-button .fa-crosshairs,
+      .button-container .remain-button .fa-crosshairs {
+        font-size: 1.5rem; }
   .stock-notice-container {
     display: flex;
     flex-direction: row;
@@ -6217,19 +6235,19 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: none;
+    justify-content: center;
     position: absolute;
     top: 0;
     right: 0;
     transform: translateY(70px);
     z-index: 1;
-    width: 25vw;
+    width: 100vw;
     height: 10vh;
     background-color: #ffffff96;
     padding: 5px;
     margin: 0px; }
     .info-wrapper .notice {
-      color: #3498db;
+      color: #0022d2;
       font-weight: 800;
       text-shadow: 1px 1px 5px #9e9e9ec4;
       font-size: 1rem; }
@@ -6280,12 +6298,24 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
         width: 25vw;
         padding: 10px;
         font-size: 1.1rem; }
-  .gps-button {
-    padding: 0.8rem;
-    border-radius: 50%;
-    cursor: pointer; }
-    .gps-button .fa-crosshairs {
-      font-size: 1.5rem; }
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; }
+    .button-container .gps-button,
+    .button-container .remain-button {
+      height: 50px;
+      width: 50px;
+      padding: 0.8rem;
+      border-radius: 50%;
+      background-color: white;
+      font-weight: 800;
+      margin: 2px;
+      cursor: pointer; }
+      .button-container .gps-button .fa-crosshairs,
+      .button-container .remain-button .fa-crosshairs {
+        font-size: 1.5rem; }
   .stock-notice-container {
     display: flex;
     flex-direction: row;
@@ -6334,13 +6364,13 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     right: 0;
     transform: translateY(70px);
     z-index: 1;
-    width: 20vw;
+    width: 100vw;
     height: 10vh;
     background-color: #ffffff96;
     padding: 5px;
     margin: 0px; }
     .info-wrapper .notice {
-      color: #3498db;
+      color: #0022d2;
       font-weight: 800;
       text-shadow: 1px 1px 5px #9e9e9ec4;
       font-size: 1.1rem; }
@@ -6420,7 +6450,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
       overflow: hidden; }
     .wrap .info .desc {
       position: relative;
-      height: 75px;
+      height: 85px;
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -6429,9 +6459,20 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
       .wrap .info .desc .status {
         font-size: 1.1rem;
         font-weight: 750; }
+      .wrap .info .desc .created-at {
+        font-size: 0.9rem; }
       .wrap .info .desc .addr {
-        white-space: pre-wrap;
-        text-align: center;
+        color: white;
+        border-radius: 10px;
+        background: #f9ca24;
+        text-decoration: none;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 1px;
         margin-left: 5px;
         margin-right: 5px; }
 
