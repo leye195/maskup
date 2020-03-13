@@ -133,18 +133,18 @@ import { getAPIData } from "./mask";
         };
       });
       let imgSrc = "";
-      const imgSize = new kakao.maps.Size(24, 30);
+      const imgSize = new kakao.maps.Size(50, 50);
       for (let i = 0; i < positions.length; i++) {
         if (positions[i].remain_stat === "break") {
-          imgSrc = "/static/img/marker-white.png";
+          imgSrc = "/static/img/white-marker.svg";
         } else if (positions[i].remain_stat === "empty") {
-          imgSrc = "/static/img/marker-grey.png";
+          imgSrc = "/static/img/grey-marker.svg";
         } else if (positions[i].remain_stat === "few") {
-          imgSrc = "/static/img/marker-red.png";
+          imgSrc = "/static/img/red-marker.svg";
         } else if (positions[i].remain_stat === "some") {
-          imgSrc = "/static/img/marker-yellow.png";
+          imgSrc = "/static/img/yellow-marker.svg";
         } else if (positions[i].remain_stat === "plenty") {
-          imgSrc = "/static/img/marker-green.png";
+          imgSrc = "/static/img/green-marker.svg";
         }
         let markerImg = new kakao.maps.MarkerImage(imgSrc, imgSize);
         let marker = new kakao.maps.Marker({
