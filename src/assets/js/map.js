@@ -1,4 +1,4 @@
-import { getAPIData, getPlaceCoords } from "./mask";
+import { getAPIData } from "./mask";
 (() => {
   //map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
@@ -25,8 +25,6 @@ import { getAPIData, getPlaceCoords } from "./mask";
     } = e;
     input = value;
     try {
-      //onst data = await getPlaceCoords(input);
-      //console.log(data);
       let ps = new kakao.maps.services.Places();
       ps.keywordSearch(input, placeSearchCB);
     } catch (e) {
@@ -42,9 +40,8 @@ import { getAPIData, getPlaceCoords } from "./mask";
       // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
       // LatLngBounds 객체에 좌표를 추가
       const bounds = new kakao.maps.LatLngBounds();
-      for (let i = 0; i < data.length; i++) {
+      for (let i = 0; i < data.length; i++)
         bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-      }
       map.setBounds(bounds); //검색 위치를 기준으로 지도 범위 설정
       map.setLevel(4);
       const { Ga, Ha } = map.getCenter();
@@ -74,7 +71,9 @@ import { getAPIData, getPlaceCoords } from "./mask";
     title.innerText = `${obj.title}`;
     stockAt.innerText = `입고시간: ${obj.stock_at}`;
     status.innerText = `재고상태: ${
-      obj.remain_stat === "empty"
+      obj.remain_stat === "break"
+        ? "판매 중지"
+        : obj.remain_stat === "empty"
         ? "품절"
         : obj.remain_stat === "few"
         ? "적음(1~29개)"
@@ -122,7 +121,6 @@ import { getAPIData, getPlaceCoords } from "./mask";
     try {
       let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
-      //console.log(stores[0]);
       const positions = stores.map(item => {
         return {
           addr: item.addr,
@@ -136,9 +134,10 @@ import { getAPIData, getPlaceCoords } from "./mask";
       });
       let imgSrc = "";
       const imgSize = new kakao.maps.Size(24, 30);
-
       for (let i = 0; i < positions.length; i++) {
-        if (positions[i].remain_stat === "empty") {
+        if (positions[i].remain_stat === "break") {
+          imgSrc = "/static/img/marker-white.png";
+        } else if (positions[i].remain_stat === "empty") {
           imgSrc = "/static/img/marker-grey.png";
         } else if (positions[i].remain_stat === "few") {
           imgSrc = "/static/img/marker-red.png";

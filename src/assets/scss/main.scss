@@ -68,7 +68,7 @@
     bottom: 0;
     background-color: transparent;
     width: 8rem;
-    height: 10rem;
+    height: 13rem;
     z-index: 1;
     .img-container {
       @include flex(column, none, center);
@@ -166,7 +166,7 @@
     bottom: 0;
     background-color: transparent;
     width: 10rem;
-    height: 10rem;
+    height: 13rem;
     z-index: 1;
     .img-container {
       @include flex(column, none, center);
@@ -262,7 +262,7 @@
     bottom: 0;
     background-color: transparent;
     width: 10rem;
-    height: 10rem;
+    height: 13rem;
     z-index: 1;
     .img-container {
       @include flex(column, none, center);
