@@ -8,7 +8,7 @@
     position: fixed;
     width: 100vw !important;
     height: 57px !important;
-    z-index: 3;
+    z-index: 2;
   }
   header {
     background-color: $greensea !important;
@@ -17,7 +17,6 @@
     height: 57px !important;
   }
   .side {
-    z-index: 10 !important;
   }
   .row {
     justify-content: space-between;

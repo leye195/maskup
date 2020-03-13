@@ -6022,14 +6022,12 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     position: fixed;
     width: 100vw !important;
     height: 57px !important;
-    z-index: 3; }
+    z-index: 2; }
   header {
     background-color: #16a085 !important;
     display: flex !important;
     width: 100vw !important;
     height: 57px !important; }
-  .side {
-    z-index: 10 !important; }
   .row {
     justify-content: space-between; }
   .wrapper {

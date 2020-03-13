@@ -69,7 +69,7 @@ import { getAPIData } from "./mask";
 
     close.innerText = `❌`;
     title.innerText = `${obj.title}`;
-    stockAt.innerText = `입고시간: ${obj.stock_at}`;
+    stockAt.innerText = `입고시간: ${obj.stock_at ? obj.stock_at : ""}`;
     status.innerText = `재고상태: ${
       obj.remain_stat === "break"
         ? "판매 중지"

@@ -11,6 +11,7 @@ const days = {
 export const localMiddleware = (req, res, next) => {
   const today = moment();
   res.locals.siteTitle = "마스크's Up";
+  res.locals.pageTitle = "마스크's Up | 마스크 지도";
   //res.locals.api = KEY;
   res.locals.today = days[today.day()];
   next();

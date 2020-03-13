@@ -9,7 +9,7 @@
         stroke-width="1"
         stroke-miterlimit="10"
         stroke="#737373"
-        fill="#F1C40D"
+        fill="#FFCC00"
         d="M54 14 L54,14 35,14 32,16 29,14 10,14
 				10,35 29,35 32,41 35,35 54,35 54,14"  
         stroke-linejoin="round"
