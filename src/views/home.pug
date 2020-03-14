@@ -3,7 +3,7 @@ block content
     div(id="map" style="width:100vw;height:100vh;")
     .info-wrapper 
         p.today=`오늘은 ${today.day}요일 입니다`
-        p.notice=`${today.target!=="토"&& today.target!=="일"?`주민번호 끝 자리 ${today.target} 구매 가능`:`출생연도 관계없이 구매 가능`}` 
+        p.notice=`${today.day!=="토"&& today.day!=="일"?`주민번호 끝 자리 ${today.target} 구매 가능합니다.`:`평일에 마스크 구입 못하신 분들은 구매 가능합니다.`}` 
     include ./partials/stockNotice
 
 

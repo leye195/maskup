@@ -3,7 +3,7 @@ import moment from "moment";
 (() => {
   //map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
-    remainBtn = document.querySelector(".remain-buttin"),
+    //remainBtn = document.querySelector(".remain-buttin"),
     gpsBtn = document.querySelector(".gps-button"),
     searchBar = document.querySelector("#search");
   let map = null,
