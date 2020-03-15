@@ -13,6 +13,7 @@ export const localMiddleware = (req, res, next) => {
   res.locals.siteTitle = "마스크's Up";
   res.locals.pageTitle = "마스크's Up | 마스크 지도";
   //res.locals.api = KEY;
+  console.log(today.day());
   res.locals.today = days[today.day()];
   next();
 };
