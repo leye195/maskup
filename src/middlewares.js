@@ -1,4 +1,5 @@
 import moment from "moment";
+import timeZone from "moment-timezone";
 const days = {
   0: { day: "일", target: "전체" },
   1: { day: "월", target: "1,6" },
@@ -9,10 +10,12 @@ const days = {
   6: { day: "토", target: "전체" }
 };
 export const localMiddleware = (req, res, next) => {
-  const today = moment();
+  //timeZone();
+  const today = moment.tz("Asia/Seoul");
   res.locals.siteTitle = "마스크's Up";
   res.locals.pageTitle = "마스크's Up | 마스크 지도";
   //res.locals.api = KEY;
+
   console.log(today.day());
   res.locals.today = days[today.day()];
   next();
