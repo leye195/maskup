@@ -10,3 +10,4 @@ export const robots = (req, res) => {
   Disallow: /
   Allow: /$`);
 };
+export const siteMap = (req, res) => {};
