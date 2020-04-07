@@ -5,25 +5,40 @@ import moment from "moment";
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
     //remainBtn = document.querySelector(".remain-buttin"),
     gpsBtn = document.querySelector(".gps-button"),
-    searchBar = document.querySelector("#search");
+    searchBar = document.querySelector("#search"),
+    toggleBar = document.querySelector(".toggle-bar-container");
   let map = null,
     input = "",
     infowin = null,
-    clickedOverlay = null;
+    clickedOverlay = null,
+    onSaleOnly = false,
+    markers = [];
   const initMap = () => {
-    const options = {
-      //지도를 생성할 때 필요한 기본 옵션
-      center: new kakao.maps.LatLng(36.82170954976736, 127.2220151649409), //지도의 중심좌표.
-      level: 12, //지도의 레벨(확대, 축소 정도)
-      scrollwheel: true
-    };
-    map = new kakao.maps.Map(container, options);
+    let coords = getCoords();
+    if (coords) {
+      const options = {
+        //지도를 생성할 때 필요한 기본 옵션
+        center: new kakao.maps.LatLng(coords.lat, coords.lng), //지도의 중심좌표.
+        level: 4, //지도의 레벨(확대, 축소 정도)
+        scrollwheel: true,
+      };
+      map = new kakao.maps.Map(container, options);
+      mapPins(coords.lat, coords.lng);
+    } else {
+      const options = {
+        //지도를 생성할 때 필요한 기본 옵션
+        center: new kakao.maps.LatLng(36.82170954976736, 127.2220151649409), //지도의 중심좌표.
+        level: 12, //지도의 레벨(확대, 축소 정도)
+        scrollwheel: true,
+      };
+      map = new kakao.maps.Map(container, options);
+    }
     map.setMinLevel(2);
     map.setMaxLevel(12);
   };
-  const handleSearch = async e => {
+  const handleSearch = async (e) => {
     const {
-      target: { value }
+      target: { value },
     } = e;
     input = value;
     try {
@@ -50,7 +65,7 @@ import moment from "moment";
       mapPins(Ha, Ga);
     }
   };
-  const getInfoWinTag = obj => {
+  const getInfoWinTag = (obj) => {
     const wrap = document.createElement("div"),
       info = document.createElement("div"),
       title = document.createElement("div"),
@@ -116,7 +131,7 @@ import moment from "moment";
       content: getInfoWinTag(info),
       position: marker.getPosition(),
       clickable: true,
-      zIndex: 3
+      zIndex: 3,
     });
     infowin.setMap(map);
     clickedOverlay = infowin;
@@ -133,7 +148,8 @@ import moment from "moment";
     try {
       let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
-      const positions = stores.map(item => {
+      //console.log(stores);
+      const positions = stores.map((item) => {
         return {
           addr: item.addr,
           code: item.code,
@@ -141,7 +157,7 @@ import moment from "moment";
           title: item.name,
           remain_stat: item.remain_stat,
           stock_at: item.stock_at,
-          latlng: new kakao.maps.LatLng(item.lat, item.lng)
+          latlng: new kakao.maps.LatLng(item.lat, item.lng),
         };
       });
       let imgSrc = "";
@@ -157,18 +173,27 @@ import moment from "moment";
           imgSrc = "/static/img/yellow-marker.svg";
         } else if (positions[i].remain_stat === "plenty") {
           imgSrc = "/static/img/green-marker.svg";
+        } else {
         }
         let markerImg = new kakao.maps.MarkerImage(imgSrc, imgSize);
         let marker = new kakao.maps.Marker({
           map: map,
           position: positions[i].latlng,
           title: positions[i].title,
-          image: markerImg
+          image: markerImg,
         });
+        if (
+          positions[i].remain_stat === "empty" ||
+          positions[i].remain_stat === "break" ||
+          positions[i].remain_stat === null
+        ) {
+          markers.push(marker);
+        }
         kakao.maps.event.addListener(marker, "click", () => {
           handleClickMarker(marker, positions[i]);
         });
       }
+      if (onSaleOnly) hideMarkers();
     } catch (e) {
       console.log(e);
     }
@@ -189,38 +214,66 @@ import moment from "moment";
   const getCoords = () => {
     if (localStorage.getItem("latlng"))
       return JSON.parse(localStorage.getItem("latlng"));
+    return null;
   };
-  const getPosition = pos => {
+  const getPosition = (pos) => {
     saveCoords(pos.coords.latitude, pos.coords.longitude);
     kakao.maps.event.addListener(map, "dragend", () => {
       let latlng = map.getCenter();
       mapPins(latlng.getLat(), latlng.getLng());
     });
   };
-  const handlePositionError = e => {
+  const handlePositionError = (e) => {
     console.log("위치 좌표를 불러올수 없습니다.");
     console.log(e);
   };
-  const getCurrentCoord = () => {
+  const getCurrentCoord = async () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
+      await navigator.geolocation.getCurrentPosition(
         getPosition,
         handlePositionError
       );
     }
   };
-  const panTo = e => {
+  const panTo = (e) => {
+    getCurrentCoord();
     const coords = getCoords();
     const moveLatLng = new kakao.maps.LatLng(coords.lat, coords.lng);
     map.setLevel(4);
     map.panTo(moveLatLng);
     mapPins(coords.lat, coords.lng);
   };
+  const onToggleBar = (e) => {
+    const toggleBtn = toggleBar.querySelector(".fas");
+    if (toggleBtn.classList.contains("fa-toggle-off")) {
+      toggleBtn.classList.remove("fa-toggle-off");
+      toggleBtn.classList.add("fa-toggle-on");
+      hideMarkers();
+    } else {
+      toggleBtn.classList.add("fa-toggle-off");
+      toggleBtn.classList.remove("fa-toggle-on");
+      showAllMarkers();
+    }
+    onSaleOnly = !onSaleOnly;
+  };
+  const setMarkers = (map) => {
+    for (let i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  };
+  const showAllMarkers = () => {
+    setMarkers(map);
+  };
+  const hideMarkers = () => {
+    setMarkers(null);
+  };
   const init = () => {
     initMap();
     getCurrentCoord();
     gpsBtn.addEventListener("click", panTo);
     searchBar.addEventListener("change", handleSearch);
+    toggleBar.addEventListener("click", onToggleBar);
+    //alert("123123");
   };
   init();
 })();

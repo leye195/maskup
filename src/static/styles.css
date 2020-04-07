@@ -6486,4 +6486,61 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
   font-weight: 700 !important; }
 
 .source-from {
-  font-size: 0.8rem !important; }
+  font-size: 0.8rem !important;
+  background: white;
+  margin: 10px !important;
+  padding: 5px !important;
+  border: 5px solid;
+  border-radius: 10px; }
+
+@media (min-width: 320px) and (max-width: 757px) {
+  .toggle-bar-container {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    right: 10px;
+    top: 65px;
+    z-index: 2;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.9; }
+    .toggle-bar-container .toggle-bar {
+      font-size: 1.5rem; } }
+
+@media (min-width: 758px) and (max-width: 1023px) {
+  .toggle-bar-container {
+    position: absolute;
+    background-color: white;
+    border-radius: 10%;
+    right: 15px;
+    top: 150px;
+    z-index: 2;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; }
+    .toggle-bar-container .toggle-bar {
+      font-size: 1.5rem; } }
+
+@media (min-width: 1024px) {
+  .toggle-bar-container {
+    position: absolute;
+    background-color: white;
+    border-radius: 10%;
+    right: 40px;
+    top: 150px;
+    z-index: 2;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; }
+    .toggle-bar-container .toggle-bar {
+      font-size: 1.5rem; } }

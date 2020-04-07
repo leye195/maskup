@@ -14,7 +14,11 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
 app.use(helmet());
-app.use(cors());
+app.use(
+  cors({
+    credentials: true
+  })
+);
 app.use("/static", express.static(path.join(__dirname, "static")));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
