@@ -25,3 +25,5 @@ Link: https://www.mask-up.me
 - 30개 미만(29개~2개) : 부족 \* 빨강색
 
 - 1개~0개 : 없음 또는 판매전 : \* 회색
+
+<img width="100%" alt="스크린샷 2020-04-09 오전 1 12 51" src="https://user-images.githubusercontent.com/30601503/78807727-69fc8680-79ff-11ea-808b-62304baa50c2.png">
