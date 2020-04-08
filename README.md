@@ -1,18 +1,19 @@
 # maskup(마스크업)
 
 공적 마스크 api를 이용한 주변 마스크 판매 정보 제공 플랫폼</br>
-Link: https://www.mask-up.me
+Link: https://www.mask-up.me</br>
 
-- Express, pug Template, VanilaJS, Scss, Kakao Map 이용
+Express, pug Template, VanilaJS, Scss, Kakao Map 이용
 
 ### ToDO
 
-- 기본 셋팅 및 라우트 셋팅 및 기본 UI 틀 작성 [x]
-- Kakao Map API 등록 및 연동 [x]
-- 마스크 api 연동 및 데이터 활용 표시 작업 [x]
-- 녹색(100개 이상) / 노랑색(30 ~ 99개) / 빨강색(2 ~ 29개) / 회색(0 ~ 1개) 표시 [x]
-- map overlay 커스터마이징 및 클릭시 정보 표시 [x]
-- 현재 요일에 마스크 구입 가능한 주민번호 뒷자리 알림 표시[x]
+- 기본 셋팅 및 라우트 셋팅 및 기본 UI 틀 작성 ✅
+- Kakao Map API 등록 및 연동 ✅
+- 마스크 api 연동 및 데이터 활용 표시 작업 ✅
+- 녹색(100개 이상) / 노랑색(30 ~ 99개) / 빨강색(2 ~ 29개) / 회색(0 ~ 1개) 표시 ✅
+- map overlay 커스터마이징 및 클릭시 정보 표시 ✅
+- 현재 요일에 마스크 구입 가능한 주민번호 뒷자리 알림 표시 ✅
+- Toggle버튼 이용 제고 있는 곳만 표시
 
 ### 데이터 출처: 심평원‧정보화진흥원(공공데이터 포털)‧정보화진흥원(공공데이터포털)
 
