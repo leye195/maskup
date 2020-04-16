@@ -3,7 +3,6 @@ import moment from "moment";
 (() => {
   //map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   const container = document.getElementById("map"), //지도를 담을 영역의 DOM 레퍼런스
-    //remainBtn = document.querySelector(".remain-buttin"),
     gpsBtn = document.querySelector(".gps-button"),
     searchBar = document.querySelector("#search"),
     toggleBar = document.querySelector(".toggle-bar-container");
@@ -148,7 +147,6 @@ import moment from "moment";
     try {
       let response = await getAPIData(latitude, longitude, 1500);
       const stores = response.data.stores;
-      //console.log(stores);
       const positions = stores.map((item) => {
         return {
           addr: item.addr,
@@ -273,7 +271,6 @@ import moment from "moment";
     gpsBtn.addEventListener("click", panTo);
     searchBar.addEventListener("change", handleSearch);
     toggleBar.addEventListener("click", onToggleBar);
-    //alert("123123");
   };
   init();
 })();
