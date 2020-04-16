@@ -1,31 +1,33 @@
 doctype html
 html
-    head
+    head(lang="ko")
         title #{pageTitle}
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(charset="utf-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no")
         meta(name="keywords", content="마스크's Up, 마스크 업")
         meta(name="description", content="지도를 통해 약국, 우체국, 하나로마트 등 마스크 공적 판매처 제고 현황을 한 눈에 확인하세요.")
         meta(name="title" content="마스크's Up | 마스크 지도")
-        mata(property="og:type" content="website" )
-        mata(property="og:title" content="마스크's Up | 마스크 지도" )
-        meta(property="og:description" content="지도를 통해 약국, 우체국, 하나로마트 등 마스크 공적 판매처 제고 현황을 한 눈에 확인하세요." )
-        mata(property="og:url" content="https://mask-up.me" )
         meta(name="naver-site-verification" content="362be5be8dd054d27953d549577fd22437bfdc5b")
         meta(name="google-site-verification" content="zX8qVstl2foFj3rQGbSKFcOue2Y3JYw_wks8DHrf9GU")
         link(rel="stylesheet", href="/static/styles.css")
         link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
         link(rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css")
-        script(src="https://kit.fontawesome.com/e5fb7a43a0.js",crossorigin="anonymous")
-        script(defer src="https://code.getmdl.io/1.3.0/material.min.js")
+        script(src="https://kit.fontawesome.com/e5fb7a43a0.js",crossorigin="anonymous") 
+        script(defer, src="https://code.getmdl.io/1.3.0/material.min.js")
         script(type="text/javascript" src=`//dapi.kakao.com/v2/maps/sdk.js?appkey=${api}&libraries=services,drawing`)
-    body
-        include ../partials/header
-        block content
-        script(src="/static/main.js")
+        script(async, src="/static/main.js")
         script(type="text/javascript" src="//wcs.naver.net/wcslog.js")
-        script(type="text/javascript").
+        script(async, type="text/javascript").
             if(!wcs_add) var wcs_add = {};
             wcs_add["wa"] = "7bd0c54d3954e";
             wcs_do();
+        meta(property="og:url" content="https://mask-up.me")
+        meta(property="og:title" content="마스크's Up | 마스크 지도")
+        meta(property="og:type" content="website")
+        meta(property="og:description" content="지도를 통해 약국, 우체국, 하나로마트 등 마스크 공적 판매처 제고 현황을 한 눈에 확인하세요." )
+    body
+        block content
+
+
 
     

@@ -1,5 +1,6 @@
 extends ./layout/layout
 block content 
+    include ./partials/header
     div(id="map" style="width:100vw;height:100vh;")
     .info-wrapper 
         p.today=`오늘은 ${today.day}요일 입니다`
