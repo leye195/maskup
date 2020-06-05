@@ -266,11 +266,14 @@ import moment from "moment";
     setMarkers(null);
   };
   const init = () => {
-    initMap();
-    getCurrentCoord();
-    gpsBtn.addEventListener("click", panTo);
-    searchBar.addEventListener("change", handleSearch);
-    toggleBar.addEventListener("click", onToggleBar);
+    window.addEventListener("load", () => {
+      document.body.classList.remove("before-loading");
+      initMap();
+      getCurrentCoord();
+      gpsBtn.addEventListener("click", panTo);
+      searchBar.addEventListener("change", handleSearch);
+      toggleBar.addEventListener("click", onToggleBar);
+    });
   };
   init();
 })();

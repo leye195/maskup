@@ -90,12 +90,12 @@
   .info-wrapper {
     @include flex(column, center, none);
     position: absolute;
-    top: 0;
+    top: -5px;
     right: 0;
     transform: translateY(60px);
     z-index: 1;
     width: 100vw;
-    height: 10vh;
+    height: 5vh;
     background-color: #ffffff96;
     padding: 5px;
     margin: 0px;
@@ -110,6 +110,7 @@
       width: 100%;
       margin: 0px;
       font-size: 0.75rem;
+      font-weight: 700;
       .today {
         font-weight: 800;
       }
@@ -196,12 +197,12 @@
   .info-wrapper {
     @include flex(column, center, center);
     position: absolute;
-    top: 0;
+    top: -14px;
     right: 0;
     transform: translateY(70px);
     z-index: 1;
     width: 100vw;
-    height: 10vh;
+    height: 5vh;
     background-color: #ffffff96;
     padding: 5px;
     margin: 0px;
@@ -215,6 +216,7 @@
       @include flex(row, center, center);
       width: 100%;
       margin: 0px;
+      font-weight: 700;
       .today {
         font-weight: 800;
       }
@@ -301,12 +303,12 @@
   .info-wrapper {
     @include flex(column, center, none);
     position: absolute;
-    top: 0;
+    top: -12px;
     right: 0;
     transform: translateY(70px);
     z-index: 1;
     width: 100vw;
-    height: 10vh;
+    height: 5vh;
     background-color: #ffffff96;
     padding: 5px;
     margin: 0px;
@@ -320,6 +322,7 @@
       @include flex(row, center, center);
       width: 100%;
       margin: 5px;
+      font-weight: 700;
       .today {
         font-weight: 800;
       }
