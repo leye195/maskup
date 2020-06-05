@@ -6549,7 +6549,8 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
       font-size: 1.5rem; } }
 
 .loading-container {
-  opacity: 0; }
+  opacity: 0;
+  display: none; }
 
 .before-loading .loading-container {
   display: flex;
@@ -6595,3 +6596,73 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
     stroke-dashoffset: -142; }
   100% {
     stroke-dashoffset: -157; } }
+
+.modal-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3; }
+  .modal-container .modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: white;
+    opacity: 0.7; }
+  .modal-container .modal {
+    position: relative;
+    background-color: white;
+    z-index: 4;
+    height: 50vh;
+    width: 20rem;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    border: 1px solid #e3e3e3; }
+    .modal-container .modal .exit-btn {
+      display: flex;
+      flex-direction: row-reverse;
+      margin: 10px;
+      cursor: pointer; }
+    .modal-container .modal .title {
+      text-align: center; }
+    .modal-container .modal .announcements {
+      overflow-x: hidden;
+      overflow-y: scroll;
+      margin-top: 2rem; }
+      .modal-container .modal .announcements .announcement-1 p {
+        text-align: center;
+        margin-bottom: 3px;
+        font-weight: 800; }
+      .modal-container .modal .announcements .announcement-2 {
+        margin: 0px 1rem;
+        padding-top: 5px; }
+        .modal-container .modal .announcements .announcement-2 li {
+          list-style: outside;
+          width: 80%;
+          margin: 0 auto; }
+    .modal-container .modal .btn-container {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      height: 50px; }
+      .modal-container .modal .btn-container button {
+        all: unset;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+        height: 100%;
+        margin: 0 auto;
+        background-color: #2ecc71;
+        color: white;
+        font-weight: 800;
+        font-size: 1.5rem;
+        border-radius: 20px;
+        cursor: pointer; }
