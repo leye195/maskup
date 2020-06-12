@@ -1,3 +1,15 @@
+.kakao_ad_area {
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+}
+.stock-notice-container {
+  @include flex(row, center, center);
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  background-color: transparent;
+}
 @include mobile {
   body {
     margin: 0;
@@ -67,11 +79,6 @@
     }
   }
   .stock-notice-container {
-    @include flex(row, center, center);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
     width: 8rem;
     height: 13rem;
     z-index: 1;
@@ -174,11 +181,6 @@
   }
 
   .stock-notice-container {
-    @include flex(row, center, center);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
     width: 10rem;
     height: 13rem;
     z-index: 1;
@@ -280,11 +282,6 @@
     }
   }
   .stock-notice-container {
-    @include flex(row, center, center);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: transparent;
     width: 10rem;
     height: 13rem;
     z-index: 1;
