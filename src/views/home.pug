@@ -2,16 +2,17 @@ extends ./layout/layout
 block content 
     include ./partials/header
     .map-container
-        div(id="map" style="width:100vw;height:100vh;")
+        div(id="map" style="width:100vw;height:94.5%;")
         .info-wrapper 
             p.today=`오늘은 ${today.day}요일 입니다`
         include ./partials/stockNotice
         include ./partials/toggleBar
         include ./partials/loading
-    ins.kakao_ad_area(style="display:none;"
-        data-ad-unit="DAN-1h7io515trl9d"
-        data-ad-width="320" 
-        data-ad-height="50")
+        .ad-container
+            ins.kakao_ad_area(style="display:none;"
+            data-ad-unit="DAN-1h7io515trl9d"
+            data-ad-width="320" 
+            data-ad-height="100")
     include ./partials/modal
 
 

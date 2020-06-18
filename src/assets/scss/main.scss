@@ -1,5 +1,4 @@
 .kakao_ad_area {
-  position: absolute;
   bottom: 0;
   z-index: 100;
 }
@@ -9,6 +8,14 @@
   right: 0;
   bottom: 5%;
   background-color: transparent;
+}
+.map-container {
+  height: 100vh;
+}
+.ad-container {
+  @include flex(row, center, center);
+  height: 5.5%;
+  background-color: $grey2;
 }
 @include mobile {
   body {
@@ -28,8 +35,7 @@
     width: 100vw !important;
     height: 57px !important;
   }
-  .side {
-  }
+
   .row {
     justify-content: space-between;
   }
@@ -94,6 +100,7 @@
       }
     }
   }
+
   .info-wrapper {
     @include flex(column, center, none);
     position: absolute;
