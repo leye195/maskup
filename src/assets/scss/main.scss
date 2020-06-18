@@ -6,7 +6,7 @@
   @include flex(row, center, center);
   position: absolute;
   right: 0;
-  bottom: 5%;
+  bottom: 10%;
   background-color: transparent;
 }
 .map-container {
@@ -14,8 +14,8 @@
 }
 .ad-container {
   @include flex(row, center, center);
-  height: 5.5%;
-  background-color: $grey2;
+  height: 7%;
+  background-color: $adBgColor;
 }
 @include mobile {
   body {

@@ -6021,7 +6021,7 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
   justify-content: center;
   position: absolute;
   right: 0;
-  bottom: 5%;
+  bottom: 10%;
   background-color: transparent; }
 
 .map-container {
@@ -6032,8 +6032,8 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 5.5%;
-  background-color: #dcdde1; }
+  height: 7%;
+  background-color: #bfc1beba; }
 
 @media (min-width: 320px) and (max-width: 757px) {
   body {
