@@ -1,14 +1,14 @@
 extends ./layout/layout
 block content 
     include ./partials/header
-    .map-container
-        div(id="map" style="width:100vw;height:93%;")
+    main.map-container
+        section(id="map" style="width:100vw;height:93%;")
         .info-wrapper 
             p.today=`오늘은 ${today.day}요일 입니다`
         include ./partials/stockNotice
         include ./partials/toggleBar
         include ./partials/loading
-        .ad-container
+        section.ad-container
             ins.kakao_ad_area(style="display:none;"
             data-ad-unit="DAN-1h7io515trl9d"
             data-ad-width="320" 
