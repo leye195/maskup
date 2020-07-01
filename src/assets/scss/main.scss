@@ -9,9 +9,13 @@
   height: 100vh;
 }
 .ad-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
   @include flex(row, center, center);
   height: 12%;
-  background-color: $adBgColor;
+  background-color: #bfc1be00;
   margin: 5px;
   iframe {
     width: 50vw;

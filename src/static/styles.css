@@ -6024,12 +6024,16 @@ fieldset[disabled] .mdl-textfield .mdl-textfield__label, .mdl-textfield.is-disab
   height: 100vh; }
 
 .ad-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   height: 12%;
-  background-color: #bfc1beba;
+  background-color: #bfc1be00;
   margin: 5px; }
   .ad-container iframe {
     width: 50vw; }
