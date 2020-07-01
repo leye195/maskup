@@ -2,17 +2,16 @@ extends ./layout/layout
 block content 
     include ./partials/header
     main.map-container
-        section(id="map" style="width:100vw;height:93%;")
+        section(id="map" style="width:100vw;height:87%;")
         .info-wrapper 
             p.today=`오늘은 ${today.day}요일 입니다`
         include ./partials/stockNotice
         include ./partials/toggleBar
         include ./partials/loading
         section.ad-container
-            ins.kakao_ad_area(style="display:none;"
-            data-ad-unit="DAN-1h7io515trl9d"
-            data-ad-width="320" 
-            data-ad-height="100")
+            script.
+                new PartnersCoupang.G({ id:266436 });
+
     include ./partials/modal
 
 

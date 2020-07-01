@@ -1,12 +1,8 @@
-.kakao_ad_area {
-  bottom: 0;
-  z-index: 100;
-}
 .stock-notice-container {
   @include flex(row, center, center);
   position: absolute;
   right: 0;
-  bottom: 10%;
+  bottom: 13%;
   background-color: transparent;
 }
 .map-container {
@@ -14,8 +10,12 @@
 }
 .ad-container {
   @include flex(row, center, center);
-  height: 7%;
+  height: 12%;
   background-color: $adBgColor;
+  margin: 5px;
+  iframe {
+    width: 50vw;
+  }
 }
 @include mobile {
   body {
