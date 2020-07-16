@@ -14,6 +14,7 @@
     padding: 0;
     margin: 0;
   }
+
   .info {
     width: 100%;
     height: 120px;
@@ -22,22 +23,28 @@
     border-right: 1px solid #ccc;
     overflow: hidden;
     background: #fff;
+
     .empty {
       color: $grey1;
     }
+
     .few {
       color: $red1;
     }
+
     .some {
       color: $yellow1;
     }
+
     .plenty {
       color: $green1;
     }
+
     &:nth-child(1) {
       border: 0;
       box-shadow: 0px 1px 2px #888;
     }
+
     &::after {
       content: "";
       position: absolute;
@@ -48,6 +55,7 @@
       height: 12px;
       background: url("http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png");
     }
+
     .link {
       color: #5085bb;
     }
@@ -67,13 +75,16 @@
       width: 17px;
       height: 17px;
     }
+
     .close:hover {
       cursor: pointer;
     }
+
     .body {
       position: relative;
       overflow: hidden;
     }
+
     .desc {
       position: relative;
       height: 85px;
@@ -82,13 +93,16 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
       .status {
         font-size: 1.1rem;
         font-weight: 750;
       }
+
       .created-at {
         font-size: 0.9rem;
       }
+
       .addr {
         color: white;
         border-radius: 10px;

@@ -5,6 +5,7 @@ block content
         section(id="map" style="width:100vw;height:100%;")
         .info-wrapper 
             p.today=`오늘은 ${today.day}요일 입니다`
+            include ./partials/shareButtons
         include ./partials/stockNotice
         include ./partials/toggleBar
         include ./partials/loading
@@ -12,7 +13,6 @@ block content
             script.
                 new PartnersCoupang.G({ id:266436 });
 
-    include ./partials/modal
 
 
 

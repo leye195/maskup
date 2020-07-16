@@ -2,6 +2,7 @@
   opacity: 0;
   display: none;
 }
+
 .before-loading .loading-container {
   display: flex;
   align-items: center;
@@ -22,6 +23,7 @@
     font-size: 2rem;
     font-weight: 700;
   }
+
   .loading-svg {
     @keyframes loadingCircle {
       from {

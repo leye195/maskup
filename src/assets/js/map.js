@@ -146,7 +146,9 @@ import moment from "moment";
   const mapPins = async (latitude, longitude) => {
     try {
       let response = await getAPIData(latitude, longitude, 1500);
+      console.log(response);
       const stores = response.data.stores;
+
       const positions = stores.map((item) => {
         return {
           addr: item.addr,
@@ -194,6 +196,9 @@ import moment from "moment";
       if (onSaleOnly) hideMarkers();
     } catch (e) {
       console.log(e);
+      alert(
+        "공공데이터 API에 이상이 있어 데이터를 불러오는데 실패 헸습니다.\n새로고침 해보시길 바랍니다."
+      );
     }
   };
 
