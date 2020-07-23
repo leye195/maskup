@@ -2,7 +2,7 @@
 
 공적 마스크 api를 이용한 주변 마스크 판매 정보 제공 맵</br>
 Link: https://www.mask-up.me</br>
-[API 제공 중지로 정보 제공 불가]
+[마스크 API 제공 중지로 정보 제공 불가]
 
 Express, pug Template, VanilaJS, Scss, Kakao Map 이용
 
