@@ -4,7 +4,11 @@
 Link: https://www.mask-up.me</br>
 > 마스크 API 제공 중지로 현재 서비스 중지 상태
 
-Express, pug Template, VanilaJS, Scss, Kakao Map 이용
+- Express
+- pug Template
+- VanilaJS
+- Scss
+- Kakao Map API
 
 ### ToDO
 
